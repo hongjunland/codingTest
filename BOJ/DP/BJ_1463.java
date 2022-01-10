@@ -6,6 +6,8 @@ import java.util.Scanner;
 public class BJ_1463 {
     static int[] count;
     static int N;
+
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         N = sc.nextInt();
