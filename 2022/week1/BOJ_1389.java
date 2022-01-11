@@ -39,8 +39,8 @@ public class BOJ_1389 {
         System.out.println(MinIdx);
     }
     static int bfs(int start){
-        boolean[] visited = new boolean[N+1];           // Check whether or not to visit.
-        int[] dist = new int[N+1];                      // Distance from departure
+        boolean[] visited = new boolean[N+1];
+        int[] dist = new int[N+1];                      // Distance from departure.
         Queue<Integer> queue = new LinkedList<>();
         queue.offer(start);
         visited[start] = true;
