@@ -15,7 +15,6 @@ public class BOJ_1927 {
             if(x==0){
                 if(pq.isEmpty()) sb.append(0+"\n");
                 else sb.append(pq.poll()+"\n");
-
             }
             else pq.offer(x);
         }
