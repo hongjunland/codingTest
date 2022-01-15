@@ -6,11 +6,10 @@ import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class BOJ_2468 {
-    static int MinHeight = Integer.MAX_VALUE;           // Minimum height
     static int MaxHeight;                               // Maximum height
     static int N;
     static int[][] Mat;
-    static int Answer = 0;
+    static int Answer = 1;                              // Minimum Answer = 1
     static final int[] dr = {-1,1,0,0};
     static final int[] dc = {0,0,-1,1};
     public static void main(String[] args) throws IOException {
@@ -22,15 +21,15 @@ public class BOJ_2468 {
             st = new StringTokenizer(br.readLine());
             for (int j = 0; j < N; j++) {
                 Mat[i][j] = Integer.parseInt(st.nextToken());
-                MinHeight = Math.min(MinHeight,Mat[i][j]);
                 MaxHeight = Math.max(MaxHeight,Mat[i][j]);
             }
         }
-        for (int i = MinHeight; i < MaxHeight; i++) {
+        for (int i = 0; i < MaxHeight; i++) {
             Answer = Math.max(Answer,countArea(i));
         }
         System.out.println(Answer);
     }
+    // return the number of group.
     static int countArea(int height){
         boolean[][] visited = new boolean[N][N];
         int cnt = 0;
@@ -44,7 +43,7 @@ public class BOJ_2468 {
         }
         return cnt;
     }
-    static void bfs(int row, int col, int height,boolean[][] visited){
+    static void bfs(int row, int col, int height, boolean[][] visited){
         Queue<int[]> queue = new LinkedList<>();
         queue.offer(new int[]{row,col});
         visited[row][col] = true;
