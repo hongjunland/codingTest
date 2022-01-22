@@ -53,6 +53,6 @@ public class BOJ_2470 {
             }
         }
         System.out.println(nums[MinLeft]+" "+nums[MinRight]);
-//        System.out.println(Min);
+        System.out.println(Min);
     }
 }
