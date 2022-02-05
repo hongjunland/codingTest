@@ -33,6 +33,7 @@ public class BOJ_3020 {
             cnt++;
         }
         System.out.println(count[1]+" "+cnt);
+        
     }
     static boolean isClash(int idx, int h){
         if(idx%2==1){
