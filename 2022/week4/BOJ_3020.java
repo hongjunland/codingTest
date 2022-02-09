@@ -30,6 +30,7 @@ public class BOJ_3020 {
             if(count[i]<count[i+1]){
                 break;
             }
+            
             cnt++;
         }
         System.out.println(count[1]+" "+cnt);
