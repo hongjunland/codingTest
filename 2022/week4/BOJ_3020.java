@@ -25,7 +25,7 @@ public class BOJ_3020 {
                 }
             }
         }
-//        System.out.println(Arrays.toString(count));
+        System.out.println(Arrays.toString(count));
         Arrays.sort(count);
         int cnt = 1;
         for (int i = 1 ; i < N ; i++){
