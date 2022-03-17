@@ -12,6 +12,7 @@ public class Programmers_86052 {
         final int[] dr = {-1,0,1,0};
         final int[] dc = {0,1,0,-1};
         HashMap<Character,Integer> hashMap = new HashMap<>(){{
+            // 블록별 방향 변환 값
             put('L',-1);
             put('S',0);
             put('R',1);
