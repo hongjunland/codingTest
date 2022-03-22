@@ -1,8 +1,7 @@
 package week7;
 
-import java.util.LinkedList;
+import java.util.Arrays;
 import java.util.PriorityQueue;
-import java.util.Queue;
 
 public class Programmers_42627 {
     public static void main(String[] args) {
@@ -11,26 +10,27 @@ public class Programmers_42627 {
 }
 class Solution {
     public int solution(int[][] jobs) {
-        PriorityQueue<Job> pq = new PriorityQueue<>();
-        for (int i = 0 ; i < jobs.length ; i++){
-            pq.offer(new Job(jobs[i][0], jobs[i][1]));
-        }
-        int current = 0;
         int answer = 0;
-        while (!pq.isEmpty()){
-//            Queue<Job> queue = new LinkedList<>();
-//            while(!pq.isEmpty() && pq.peek().start>current){
-//                queue.offer(pq.poll());
-//            }
-//            if(queue.size()>0 && pq.size()==0){
-//                current++;
-//                continue;
-//            }
-            Job job = pq.poll();
-            answer += (current+job.time-job.start);
-            current += job.time;
+        int current = 0;
+        int cnt = 0;
+        Arrays.sort(jobs, ((o1, o2) -> o1[0]-o2[0]));
+        PriorityQueue<Job> pq = new PriorityQueue<>();
+        int i = 0;
+        while (cnt < jobs.length){
+            while (i< jobs.length && jobs[i][0]<=current){
+                pq.offer(new Job(jobs[i][0],jobs[i][1]));
+                i++;
+            }
+            if(pq.isEmpty()){
+                current = jobs[i][0];
+            }else{
+                Job job = pq.poll();
+                answer += job.time + current - job.start;
+                current += job.time;
+                cnt++;
+            }
         }
-        return answer / jobs.length;
+        return answer/jobs.length;
     }
     class Job implements Comparable<Job>{
         int start;
@@ -40,10 +40,10 @@ class Solution {
             this.start = start;
             this.time = time;
         }
+
         @Override
         public int compareTo(Job o) {
-            int cmp = Integer.compare(time+start,o.time+o.start);
-            return cmp!=0 ? cmp : Integer.compare(start,o.start);
+            return time-o.time;
         }
     }
 }
