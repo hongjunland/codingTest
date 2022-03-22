@@ -10,8 +10,8 @@ public class Programmers_81302 {
         System.out.println(new Solution().solution(new String[][]{{"POOOP", "OXXOX", "OPXPX", "OOXOX", "POXXP"}, {"POOPX", "OXPXP", "PXXXO", "OXXXO", "OOOPP"}, {"PXOPX", "OXOXP", "OXPOX", "OXXOP", "PXPOX"}, {"OOOXX", "XOOOX", "OOOXX", "OXOOX", "OOOOO"}, {"PXPXP", "XPXPX", "PXPXP", "XPXPX", "PXPXP"}}));
     }
     private static class Solution {
-        static final int[] dr = {-1,1,0,0};
-        static final int[] dc = {0,0,-1,1};
+        final int[] dr = {-1,1,0,0};
+        final int[] dc = {0,0,-1,1};
         public int[] solution(String[][] places) {
             int[] answer = new int[places.length];
             for (int i = 0 ; i < places.length; i++){
@@ -76,6 +76,6 @@ public class Programmers_81302 {
             }
         }
     }
-
-
 }
+
+
