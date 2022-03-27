@@ -7,7 +7,6 @@
       <sourceFolder url="file://$MODULE_DIR$/D-친구(1058)" isTestSource="false" packagePrefix="com.backjoon._8월3주차._1058" />
       <sourceFolder url="file://$MODULE_DIR$/E-행렬(1058)" isTestSource="false" packagePrefix="com.backjoon._8월3주차._1080" />
     </content>
-    <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>

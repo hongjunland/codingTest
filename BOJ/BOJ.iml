@@ -6,7 +6,6 @@
       <sourceFolder url="file://$MODULE_DIR$/BFS" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/DP" isTestSource="false" packagePrefix="wx.bj1149" />
     </content>
-    <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>
