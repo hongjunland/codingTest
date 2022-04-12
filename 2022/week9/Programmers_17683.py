@@ -1,47 +1,31 @@
-import re
-
 def solution(m, musicinfos):
-    musics = []
     answer = []
-    m = ''.join(split_score(m))
+    m = converter(m)
     for i, item in enumerate(musicinfos):
-        musics.append(item.split(","))
-    for i, item in enumerate(musics):
-        interval = (int(item[1].split(":")[0]) - int(item[0].split(":")[0]))*60 + int(item[1].split(":")[1]) - int(item[0].split(":")[1])
-        score = split_score(item[3])
-
-        if interval < len(score):
-            score = score[:interval]
-
-        for j in range(len(score)):
-            if re.search(m, ''.join(score)):
-                answer.append([i, interval, item[2]])
-                break
-            top = score.pop()
-            score.insert(0, top)
-        if re.search(''.join(score), m):
-            answer.append([i, interval, item[2]])
-    if not answer:
+        start, end, title, record = item.split(",")
+        interval = (int(end.split(":")[0])-int(start.split(":")[0]))*60 + (int(end.split(":")[1])-int(start.split(":")[1]))
+        record = converter(record)
+        if interval < len(record):
+            record = record[:interval]
+        else:
+            record = record*(interval//len(record)) + record[:interval%len(record)]
+        if m in record:
+            answer.append([i, interval, title])
+    answer.sort(key=lambda o: (-o[1], o[0]))
+    if len(answer) == 0:
         return '(None)'
-
-    answer.sort(key = lambda x: (-x[1], x[0]))
-
     return answer[0][2]
 
 
-def split_score(score):
-
-    splited = []
-    for i in range(len(score)):
-        if score[i] == '#':
-            splited[-1] = splited[-1].lower()
-        else:
-            splited.append(score[i])
-
-    return splited
-
+def converter(word):
+    before = ["A#", "B#", "C#", "D#", "E#", "F#", "G#"]
+    after = ["a", "b", "c", "d", "e", "f", "g"]
+    for i, item in enumerate(before):
+        word = word.replace(item, after[i])
+    return word
 
 if __name__ == '__main__':
-    print(solution("ABCDEFG",["12:00,12:14,HELLO,CDEFGAB", "13:00,13:05,WORLD,ABCDEF"]))
-    print(solution("CC#BCC#BCC#BCC#B",["03:00,03:30,FOO,CC#B", "04:00,04:08,BAR,CC#BCC#BCC#B"]))
-    print(solution("ABC",["12:00,12:14,HELLO,C#DEFGAB", "13:00,13:05,WORLD,ABCDEF"]))
+    print(solution("ABCDEFG", ["12:00,12:14,HELLO,CDEFGAB", "13:00,13:05,WORLD,ABCDEF"]))
+    print(solution("CC#BCC#BCC#BCC#B", ["03:00,03:30,FOO,CC#B", "04:00,04:08,BAR,CC#BCC#BCC#B"]))
+    print(solution("ABC", ["12:00,12:14,HELLO,C#DEFGAB", "13:00,13:05,WORLD,ABCDEF"]))
+    # print(solution("CC#BCC#BCC#", ["03:00,03:08,FOO,CC#B"]))
