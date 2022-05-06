@@ -1,48 +1,44 @@
 import sys
 from collections import deque
 
-def make(size: int):
-    parent = [i for i in range(size)]
-    return parent
+N, M = map(int, sys.stdin.readline().split())
+mat = [[] for _ in range(N + 1)]
 
 
-def find(num: int, parent):
-    if num == parent[num]:
-        return num
-    else:
-        return find(parent[num], parent)
-
-
-def union(target_a: int, target_b: int, parent):
-    root_a, root_b = find(target_a, parent), find(target_b, parent)
-    if root_a == root_b:
-        return False
-    else:
-        parent[root_a] = root_b
-        return True
-
-
-def bfs(start, target, visited, mat):
-    queue = deque([])
+def bfs(start, target, weight):
+    queue = deque()
+    visited = [False] * (N + 1)
+    visited[start] = True
     queue.append(start)
     while queue:
-        print(queue.popleft())
-    return 1
+        current = queue.popleft()
+        if current == target:
+            return True
+        for item in mat[current]:
+            if not visited[item[0]] and item[1] >= weight:
+                visited[item[0]] = True
+                queue.append(item[0])
+    return False
+
 
 def solution():
-    N, M = map(int, sys.stdin.readline().split())
-    parent = make(N + 1)
-    mat = [[0 for _ in range(N + 1)] for _ in range(N + 1)]
-    visited = [[False for _ in range(N + 1)] for _ in range(N + 1)]
+    answer = 0
     for i in range(M):
         A, B, capacity = map(int, sys.stdin.readline().split())
-        mat[A][B] = capacity
-        mat[B][A] = capacity
-        union(A, B, parent)
+        mat[A].append([B, capacity])
+        mat[B].append([A, capacity])
     start, target = map(int, sys.stdin.readline().split())
-    answer = bfs(start, target, visited, mat)
-    print(answer)
+    low, high = 1, 1000000000
+    while low <= high:
+        mid = (low + high) // 2
+        if bfs(start, target, mid):
+            answer = mid
+            low = mid + 1
+        else:
+            high = mid - 1
+
+    return answer
 
 
 if __name__ == '__main__':
-    solution()
+    print(solution())
