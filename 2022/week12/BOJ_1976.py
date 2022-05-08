@@ -29,5 +29,3 @@ def solution():
             return 'NO'
     return 'YES'
 
-
-print(solution())
