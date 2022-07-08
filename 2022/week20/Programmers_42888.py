@@ -1,6 +1,6 @@
 def solution(record):
     answer = []
-    user = {}
+    user = {} # key: uid , value: nickname
     for item in record:
         item = item.split()
         if not item[0] == 'Leave':
