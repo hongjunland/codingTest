@@ -10,7 +10,5 @@ def solution(name):
         min_cnt = min(min_cnt, i + n - next + min(i, n -next))
     answer += min_cnt
     return answer
-
-
 def get_cnt(current, target):
     return min(abs(ord(current) - ord(target)), min(ord(current), ord(target)) + 26 - max(ord(current), ord(target)))
