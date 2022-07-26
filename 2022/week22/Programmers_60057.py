@@ -22,3 +22,4 @@ def solution(s):
         if len(current) < len(answer):
             answer = current
     return len(answer)
+
