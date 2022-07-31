@@ -27,6 +27,8 @@ def solution(nums):
             right -= 1
     result = list(map(lambda x: tuple(x), result))
     return result
+
+    
 if __name__ == '__main__':
     # print(solution([1,3,-2,-3,1,-1]))
     print(solution([-5,-5,-3,5]))
