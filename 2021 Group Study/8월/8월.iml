@@ -6,6 +6,7 @@
       <sourceFolder url="file://$MODULE_DIR$/week1" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/week2" isTestSource="false" packagePrefix="com.backjoon._1012" />
     </content>
+    <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>
