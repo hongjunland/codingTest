@@ -2,6 +2,7 @@
 input : 216
 output: 196
 """
+
 number_input = int(input())
 result = 0
 for candidate_number in range(number_input):
