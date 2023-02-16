@@ -1,3 +1,11 @@
+"""
+Algorithm: Sliding Window, Dynamic Programming
+row = N
+col = 3
+memory limit = 4MB
+
+메모리 최적화를 위해 입력값을 모두 저장하지 않음
+"""
 import sys
 
 N = int(sys.stdin.readline())
